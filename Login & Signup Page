@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #3498db, #8e44ad);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.3); /* Transparent white */
+        padding: 20px;
+        border-radius: 8px;
+        border: 4px solid skyblue; /* Attractive border */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 250px; /* Decreased height */
+    }
+   
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="submit"],
+    input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50; /* Green color */
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="button"] {
+        background-color: #f44336; /* Red color */
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049; /* Darker green color on hover */
+    }
+
+    input[type="button"]:hover {
+        background-color: #ff6659; /* Darker red color on hover */
+    }
+
+    .form-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .form-group input[type="submit"],
+    .form-group input[type="button"] {
+        width: 48%;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    /* Google Sign-In Button Styling */
+    #googleButton {
+      
+        color: black;
+        border: none;
+        border-radius: 5px;
+        padding: 08px 5px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        font-size: 14px; /* Decreased font size */
+        margin-top: auto;
+        margin-bottom: 10px;/* Align to the bottom of the container */
+    }
+    #googleButton:hover{
+      outline:1px solid black;
+    }
+</style>
+</head>
+<body>
+
+<div class="container" id="loginContainer">
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" id="loginPassword" placeholder="Password" required>
+        <!--<span onclick="togglePassword('loginPassword')">Show Password</span>-->
+        <div class="form-group">
+            <input type="submit" value="Submit">
+            <input type="button" value="Sign Up" onclick="toggleForm()">
+        </div>
+    </form>
+    <!-- Google Sign-In Button -->
+    <div id="googleButton">Sign in with Google</div>
+</div>
+
+<div class="container hide" id="signupContainer">
+    <h2>Sign Up</h2>
+    <form action="signup.php" method="post">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" id="signupPassword" placeholder="Password" required>
+        <!--<span onclick="togglePassword('signupPassword')">Show Password</span>-->
+        <div class="form-group">
+            <input type="submit" value="Submit">
+            <input type="button" value="Login" onclick="toggleForm()">
+        </div>
+    </form>
+        <!-- Google Sign-In Button -->
+    <div id="googleButton">Sign in with Google</div>
+</div>
+
+<!-- JavaScript for toggling password visibility -->
+<script>
+    function toggleForm() {
+        var loginContainer = document.getElementById('loginContainer');
+        var signupContainer = document.getElementById('signupContainer');
+
+        loginContainer.classList.toggle('hide');
+        signupContainer.classList.toggle('hide');
+    }
+
+    function togglePassword(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
+
+<!-- Google Sign-In Script -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+    function onSignIn(googleUser) {
+        // This function is called when the user signs in using Google
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+    }
+</script>
+
+</body>
+</html>
