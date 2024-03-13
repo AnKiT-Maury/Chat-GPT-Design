@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student ID Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2980b9, #3498db);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .id-card {
+      width: 85.60mm; /* Width of an ATM card */
+      height: 53.98mm; /* Height of an ATM card */
+      background-color: #fff;
+      border-radius: 3.48mm; /* Maximum rounded corner radius */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border:3px soild black;
+    }
+
+    .header {
+      background-color: #2980b9;
+      color: #fff;
+      padding: 5px;
+      height:50px;
+      margin-bottom: 5px;
+      border-top-left-radius: 3.48mm;
+      border-top-right-radius: 3.48mm;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer {
+      background-color: #2980b9;
+      color: #fff;
+      height: 50px;
+      padding: 10px;
+      border-bottom-left-radius: 3.48mm;
+      border-bottom-right-radius: 3.48mm;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+    .school-logo {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+        border-radius: 1.48mm; /* Rounded corners for the image */
+    }
+  .school-name{
+    font-size: 20px;
+  }
+    .school-details {
+      flex-grow: 1;
+    }
+    .school-details p{
+         font-size: 10px;
+      
+    }
+    .student-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .student-info img {
+      width: 30%;
+      height: auto;
+      border-radius: 3.48mm; /* Rounded corners for the image */
+      margin-right: 10px;
+    }
+
+    .student-details {
+      font-size: 10px;
+    }
+
+    .student-details h2 {
+      margin: 2px 0;
+      font-size: 14px;
+      color: #333; /* Adjust text color */
+    }
+
+    .student-details p {
+      margin: 2px 0;
+      font-size: 12px;
+      color: #555; /* Adjust text color */
+    }
+    .footer p{
+     font-size: 12px; 
+    }
+    .barcode {
+      text-align: center;
+    }
+
+    .barcode img {
+      max-width: 100%;
+      max-height: 20px;
+    }
+
+    .print-button {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .print-button button {
+      background-color: #2980b9;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      .id-card, .id-card * {
+        visibility: visible;
+      }
+
+      .id-card {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="id-card">
+    <div class="header">
+      <img class="school-logo" src="https://via.placeholder.com/150" alt="School Logo">
+      <div class="school-details">
+        <p><span class="school-name">School Name</span>  <br>  School Address <br> School Slogan </p>
+      </div>
+    </div>
+    <div class="student-info">
+      <img src="https://via.placeholder.com/150" alt="Student Photo">
+      <div class="student-details">
+        <h2>John Doe</h2>
+        <p>Father's Name: ABC Doe</p>
+        <p><span class="student-id">Student ID:</span> ABC123456</p>
+        <p><span>Date of Birth:</span> 01/01/2000</p>
+        <p><span>Class:</span> 10th Grade</p>
+      </div>
+    </div>
+    <!--<div class="barcode">-->
+    <!--  <img src="https://via.placeholder.com/100x30" alt="Barcode">-->
+    <!--</div>-->
+    <div class="footer">
+      <p>Contact: School Phone Number <br> Email: school@example.com</p>
+    </div>
+    <div class="print-button">
+      <button onclick="window.print()">Print ID Card</button>
+    </div>
+  </div>
+</body>
+</html>
