@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highlighted Cursor Arrow</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 50px;
+    }
+    .custom-cursor {
+        position: fixed;
+        top: -10px; /* Adjust as needed to position the cursor highlight */
+        left: -10px; /* Adjust as needed to position the cursor highlight */
+        pointer-events: none; /* Ensures the cursor does not interfere with mouse events */
+        z-index: 1000; /* Ensures the cursor highlight is above other elements */
+        transition: transform 0.1s ease-out; /* Smooth transition effect */
+    }
+    .cursor-inner {
+        width: 20px; /* Size of the cursor highlight */
+        height: 20px; /* Size of the cursor highlight */
+        border-radius: 50%; /* Round shape for the cursor highlight */
+        border: 2px solid rgba(255, 0, 0, 0.8); /* Red border with opacity */
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+    <h1>Highlighted Cursor Arrow</h1>
+
+    <script>
+        // Create a div element for the custom cursor highlight
+        const cursorHighlight = document.createElement('div');
+        cursorHighlight.className = 'custom-cursor';
+        const cursorInner = document.createElement('div');
+        cursorInner.className = 'cursor-inner';
+        cursorHighlight.appendChild(cursorInner);
+        document.body.appendChild(cursorHighlight);
+
+        // Function to update cursor position and highlight
+        function updateCursorPosition(event) {
+            cursorHighlight.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+        }
+
+        // Event listener to track mouse movement
+        document.addEventListener('mousemove', updateCursorPosition);
+    </script>
+</body>
+</html>
