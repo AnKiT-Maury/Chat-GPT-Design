@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID Barcode Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+    <h1>Generate Barcode for RFID UID</h1>
+
+    <!-- Form to enter RFID UID -->
+    <form id="rfidForm">
+        <label for="rfidUID">RFID UID:</label>
+        <input type="text" id="rfidUID" placeholder="Enter RFID UID" required><br><br>
+
+        <button type="submit">Generate Barcode</button>
+    </form>
+
+    <h3>Generated Barcode for RFID UID:</h3>
+    <svg id="barcode"></svg>
+
+    <script>
+        // Handle the form submission and generate the barcode
+        document.getElementById('rfidForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get the RFID UID from the form input
+            var rfidUID = document.getElementById('rfidUID').value;
+
+            // Generate the barcode using JsBarcode
+            JsBarcode("#barcode", rfidUID, {
+                format: "CODE128",  // Barcode format (CODE128 is common for general-purpose encoding)
+                width: 2,           // Barcode width
+                height: 40,         // Barcode height
+                displayValue: true, // Display the value (UID) below the barcode
+                fontSize: 18        // Font size for the value
+            });
+        });
+    </script>
+</body>
+</html>
